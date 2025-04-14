@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Classe che rappresenta un conto bancario.
  */
@@ -10,6 +12,10 @@ public class ContoBancario {
      * Il saldo del conto bancario.
      */
     protected double saldo;
+    /**
+     * La lista dei movimenti del conto bancario.
+     */
+    protected ArrayList<String> movimenti;
 
     /**
      * Costruttore che inizializza il conto bancario con un IBAN e un saldo.
@@ -79,6 +85,31 @@ public class ContoBancario {
         return "ContoBancario [iban=" + iban + ", saldo=" + saldo + "]";
     }
 
+    /**
+     * Restituisce la lista dei movimenti del conto bancario.
+     * @return la lista dei movimenti del conto bancario
+     */
+    public ArrayList<String> getMovimenti() {
+        return movimenti;
+    }
+
+    /**
+     * Restituisce gli ultimi n movimenti del conto bancario.
+     * @param n il numero di movimenti da restituire
+     * @return gli ultimi n movimenti del conto bancario
+     */
+    public ArrayList<String> getUltimiMovimenti(int n){
+        ArrayList<String> x = new ArrayList();
+        if (movimenti.size() >= n) {
+             for (int i = movimenti.size() - n; i < movimenti.size(); i++) {
+                x.add(movimenti.get(i));
+             }
+        } else {
+            return movimenti;
+        }
+        
+        return x;
+    }
     
     
     
